@@ -81,13 +81,13 @@ namespace EZCrypt
 				Console.WriteLine("");
 				
 				// decrypt example
-                Console.WriteLine("{0,-15}ezcrypt -d inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38Y6uwq90bn", "decrypt:");
+				Console.WriteLine("{0,-15}ezcrypt -d inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38Y6uwq90bn", "decrypt:");
 				Console.WriteLine("");
 				
 				Console.ForegroundColor = ConsoleColor.Blue;
 				// alert user of our auto added file extensions
 				Console.WriteLine("{0,-15}encryped files will have '.eze' extension added to them", ".eze:");
-               	Console.WriteLine("");
+				Console.WriteLine("");
 				Console.WriteLine("{0,-15}decrypted files will have '.ezd' extension added to them", ".ezd:");
 				Console.WriteLine("");
 				Console.ResetColor();
