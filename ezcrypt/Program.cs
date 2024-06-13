@@ -48,6 +48,7 @@ namespace EZCrypt
 			// if arguments don't equal 5
 			if (args.Length != 5)
 			{
+				Console.ForegroundColor = ConsoleColor.Green;
 				// we console print the usage help
 				Console.WriteLine("Encrypt or Decrypt a file.");
 				Console.WriteLine("");
@@ -77,6 +78,7 @@ namespace EZCrypt
 				//Console.WriteLine("{0,-15}encrypted files auto added file extension", "ez-e:");
 				//Console.WriteLine("{0,-15}decrypted files auto added file extension", "ez-d:");
 				//Console.WriteLine("");
+				Console.ResetColor();
 				return;
 			}
 			
@@ -89,20 +91,21 @@ namespace EZCrypt
 			 if (!File.Exists(sourceFilename))
 			 {	
 			 	// let the user know something is wrong with their input file path
+				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("\n-- source file does not exist --");
 				Console.WriteLine("\n-- confirm your entry --");
 				Console.WriteLine("\n-- use quotations for paths with spaces --");
 				Console.WriteLine("\n");
+				Console.ResetColor();
 				return;
 			 }
 			
 			// args 3 output file path
 			var destinationFilename = args[2];
 			// args 3 output file encrypted files extension
-			//var deFilename = destinationFilename + ".ez-e";
-
+			var deFilename = destinationFilename + ".eze";
 			// args 3 output file decrypted files extension
-			//var ddFilename = destinationFilename + ".ez-d";
+			var ddFilename = destinationFilename + ".ezd";
 			
 			//
 			//
@@ -146,15 +149,17 @@ namespace EZCrypt
 			{
 				// if encrypted output file already exists
 				// return
-				if (File.Exists(destinationFilename))
+				if (File.Exists(deFilename))
 				{
+					Console.ForegroundColor = ConsoleColor.Red;
 					Console.WriteLine("\n-- output file already exists --");
 					Console.WriteLine("");
+					Console.ResetColor();
 					return;
 				}
 				// encrypt the source file and write it to the destination file.
 				using (var sourceStream = File.OpenRead(sourceFilename))
-				using (var destinationStream = File.Create(destinationFilename))
+				using (var destinationStream = File.Create(deFilename))
 				using (var provider = new AesCryptoServiceProvider())
 				{
 					provider.Key = key;
@@ -163,7 +168,10 @@ namespace EZCrypt
 					{
 						destinationStream.Write(provider.IV, 0, provider.IV.Length);
 						sourceStream.CopyTo(cryptoStream);
+						Console.ForegroundColor = ConsoleColor.Green;
 						Console.WriteLine("\nFile EnCryption Complete! \n");
+						Console.WriteLine("");
+						Console.ResetColor();
 					}
 				}
 			}
@@ -174,15 +182,20 @@ namespace EZCrypt
 			{
 				// if decrypted output file already exists
 				// return
-				if (File.Exists(destinationFilename))
+				if (File.Exists(ddFilename))
 				{
+					Console.ForegroundColor = ConsoleColor.Red;
 					Console.WriteLine("\n-- output file already exists --");
 					Console.WriteLine("");
+					Console.ResetColor();
 					return;
 				}
+				
+				if (Path.GetExtension(sourceFilename) == (".eze"))
+				{
 				// decrypt the source file and write it to the destination file.
 				using (var sourceStream = File.OpenRead(sourceFilename))
-				using (var destinationStream = File.Create(destinationFilename))
+				using (var destinationStream = File.Create(ddFilename))
 				using (var provider = new AesCryptoServiceProvider())
 				{
 					var IV = new byte[provider.IV.Length];
@@ -193,7 +206,10 @@ namespace EZCrypt
 						try
 						{
 							cryptoStream.CopyTo(destinationStream);
+							Console.ForegroundColor = ConsoleColor.Green;
 							Console.WriteLine("\nFile DeCryption Complete! \n");
+							Console.WriteLine("");
+							Console.ResetColor();
 						}
 						// if the Password and/or Salt is incorrect
 						catch
@@ -201,6 +217,7 @@ namespace EZCrypt
 							// close the file copy stream so file can be deleted if created
 							// this is mainly for Windows
 							destinationStream.Close();
+							Console.ForegroundColor = ConsoleColor.Red;
 							// let the user know their Password and/or Salt is incorrect
 							Console.WriteLine("\n-- Password + Salt combination incorrect --");
 							Console.WriteLine("");
@@ -209,22 +226,34 @@ namespace EZCrypt
 							Console.WriteLine("");
 							Console.WriteLine("\n-- otherwise, input file not encrypted --");
 							Console.WriteLine("");
+							Console.ResetColor();
 							// delete the (possibly) created file that is not decrypted due to incorrect password and/or salt
-							File.Delete(destinationFilename);
+							File.Delete(ddFilename);
 							return;
 						}
 					}
 				}
 			}
-				
+			else if (Path.GetExtension(sourceFilename) != (".eze"))
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				// notify user inputfile needs to be an ".eze" encrypted file
+				Console.WriteLine("\n-- input file not '.eze' encrypted file --");
+				Console.WriteLine("");
+				Console.ResetColor();
+				return;
+			}
 				// if something other than -e and/or -d is used for args 1
 				else
 				{
 					// let the user know to user either -e and/or -d only
+					Console.ForegroundColor = ConsoleColor.Red;
 					Console.WriteLine("select the ecryption/decryption mode using -e or -d.");
+					Console.ResetColor();
 				}
 			}
 		}
 	}
+}
 							
 				
