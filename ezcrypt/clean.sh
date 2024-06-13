@@ -1,6 +1,6 @@
-rm release/v3.0/Linux/arm64/ezcrypt.pdb
-rm release/v3.0/Linux/amd64/ezcrypt.pdb
-rm release/v3.0/MacOS/arm64/ezcrypt.pdb
-rm release/v3.0/MacOS/amd64/ezcrypt.pdb
-rm release/v3.0/Windows/amd64/ezcrypt.pdb
-rm release/v3.0/Windows/i386/ezcrypt.pdb
+rm release/v3.1/Linux/arm64/ezcrypt.pdb
+rm release/v3.1/Linux/amd64/ezcrypt.pdb
+rm release/v3.1/MacOS/arm64/ezcrypt.pdb
+rm release/v3.1/MacOS/amd64/ezcrypt.pdb
+rm release/v3.1/Windows/amd64/ezcrypt.pdb
+rm release/v3.1/Windows/i386/ezcrypt.pdb
