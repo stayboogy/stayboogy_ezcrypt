@@ -7,10 +7,16 @@
 
 - Supports Windows [x86, amd64], Linux [amd64, arm64], MacOS [amd64, arm64]
 
+  
+## Usage Demo:
 ![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/b3f04ea523573140b7e340bfc4d3e9a4548ad02f/ezcrypt/media/one.gif)
 
+
+## Encryption Demo:
 ![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/b3f04ea523573140b7e340bfc4d3e9a4548ad02f/ezcrypt/media/two.gif)
 
+
+## Decryption Demo:
 ![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/b3f04ea523573140b7e340bfc4d3e9a4548ad02f/ezcrypt/media/three.gif)
 
 
