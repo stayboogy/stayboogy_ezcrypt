@@ -1,14 +1,18 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Security.Cryptography;
 
-namespace Tutorial
+namespace EZCrypt   
 {
-    class Tutorial03
+    class cryptwork
     {
         static void Main(string[] args)
         {
-            if (args.Length < 3 || args.Length > 4)
+            System.Diagnostics.Process ezcrypt = System.Diagnostics.Process.GetCurrentProcess();
+            ezcrypt.PriorityClass = System.Diagnostics.ProcessPriorityClass.High;
+
+            if (args.Length != 4)
             {
                 Console.WriteLine("Encrypt or Decrypt a file.");
                 Console.WriteLine("\nezcrypt [-e] [-d] source destination [password]\n");
@@ -16,7 +20,7 @@ namespace Tutorial
                 Console.WriteLine("{0,-15}Sets the mode to DECRYPT.", "-d");
                 Console.WriteLine("{0,-15}Specifies the source file.", "source");
                 Console.WriteLine("{0,-15}Specifies the destination file.", "destination");
-                Console.WriteLine("{0,-15}The optional password.", "password");
+                Console.WriteLine("{0,-15}Specifies the Encryption Key.", "password");
                 return;
             }
 
