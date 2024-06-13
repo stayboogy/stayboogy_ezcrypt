@@ -1,14 +1,11 @@
+// Copyright (c) 2024, stayboogy@github.com, stayboogy@mail.com, M.C.
+//
 // original source for this work comes from here: 
 // https://github.com/JohnRush/File-Encryption-Tutorial/tree/master/source/Tutorial03
 //
-//
-// I have extensively modified it to make it more secure
-//
-// I have made it Cross Platform Publishable as well - Windows, Linux, MacOS Compatible
-//
-// I have also added error handling to squash unhandled exceptions
-//
-// I have also added lots of clear notation for anyone who wants to learn from this code
+// this software is open source
+// this source code is provided free of charge
+// this source code is made available for the learners out there
 //
 //
 
