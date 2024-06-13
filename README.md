@@ -6,6 +6,10 @@
 
 ## Easily Encrypt/Decrypt Files in Windows / Linux / MacOS Terminal
 
+
+### Supports Windows [x86, amd64], Linux [amd64, arm64], MacOS [amd64, arm64]
+
+
 ### Usage:
 
 ```sh
@@ -30,7 +34,7 @@ encrypt:       ezcrypt -e inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38
 decrypt:       ezcrypt -d inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38Y6uwq90bn
 ```
 
-### Note:
+### Special Note:
 
 ```sh
 Because of the way Terminal works in Linux/MacOS, certain special characters cause issues in Password & Salt.
