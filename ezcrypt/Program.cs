@@ -48,8 +48,13 @@ namespace EZCrypt
 			// if arguments don't equal 5
 			if (args.Length != 5)
 			{
-				Console.ForegroundColor = ConsoleColor.Green;
 				// we console print the usage help
+				Console.WriteLine("");
+				Console.ForegroundColor = ConsoleColor.Blue;
+				Console.WriteLine("EZcrypt by stayboogy@github.com.");
+				Console.WriteLine("");
+				Console.ForegroundColor = ConsoleColor.Green;
+				
 				Console.WriteLine("Encrypt or Decrypt a file.");
 				Console.WriteLine("");
 				Console.WriteLine("\nezcrypt [-e] [-d] source destination [password] [salt]\n");
@@ -67,17 +72,24 @@ namespace EZCrypt
 				Console.WriteLine("");
 				Console.WriteLine("Examples:");
 				Console.WriteLine("");
+				Console.ForegroundColor = ConsoleColor.Blue;
 				Console.WriteLine("Password & Salt:  Use Numbers and Letters ONLY for Platform Cross Compatibility");
 				Console.WriteLine("");
+				Console.ForegroundColor = ConsoleColor.Green;
 				// encrypt example
 				Console.WriteLine("{0,-15}ezcrypt -e inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38Y6uwq90bn", "encrypt:");
+				Console.WriteLine("");
 				
 				// decrypt example
                 Console.WriteLine("{0,-15}ezcrypt -d inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38Y6uwq90bn", "decrypt:");
+				Console.WriteLine("");
+				
+				Console.ForegroundColor = ConsoleColor.Blue;
+				// alert user of our auto added file extensions
+				Console.WriteLine("{0,-15}encryped files will have '.eze' extension added to them", ".eze:");
                	Console.WriteLine("");
-				//Console.WriteLine("{0,-15}encrypted files auto added file extension", "ez-e:");
-				//Console.WriteLine("{0,-15}decrypted files auto added file extension", "ez-d:");
-				//Console.WriteLine("");
+				Console.WriteLine("{0,-15}decrypted files will have '.ezd' extension added to them", ".ezd:");
+				Console.WriteLine("");
 				Console.ResetColor();
 				return;
 			}
@@ -224,36 +236,34 @@ namespace EZCrypt
 							Console.WriteLine("\n-- confirm your Password --");
 							Console.WriteLine("\n-- confirm your Salt --");
 							Console.WriteLine("");
-							Console.WriteLine("\n-- otherwise, input file not encrypted --");
-							Console.WriteLine("");
 							Console.ResetColor();
 							// delete the (possibly) created file that is not decrypted due to incorrect password and/or salt
 							File.Delete(ddFilename);
 							return;
 						}
-					}
+					 }
+				  }
 				}
-			}
-			else if (Path.GetExtension(sourceFilename) != (".eze"))
-			{
-				Console.ForegroundColor = ConsoleColor.Red;
-				// notify user inputfile needs to be an ".eze" encrypted file
-				Console.WriteLine("\n-- input file not '.eze' encrypted file --");
-				Console.WriteLine("");
-				Console.ResetColor();
-				return;
-			}
-				// if something other than -e and/or -d is used for args 1
-				else
+				else if (Path.GetExtension(sourceFilename) != (".eze"))
 				{
-					// let the user know to user either -e and/or -d only
 					Console.ForegroundColor = ConsoleColor.Red;
-					Console.WriteLine("select the ecryption/decryption mode using -e or -d.");
+					// notify user inputfile needs to be an ".eze" encrypted file
+					Console.WriteLine("\n-- input file not '.eze' encrypted file --");
+					Console.WriteLine("");
 					Console.ResetColor();
+					return;
 				}
+			// if something other than -e and/or -d is used for args 1
+			else
+			{
+				// let the user know to user either -e and/or -d only
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("select the ecryption/decryption mode using -e or -d.");
+				Console.ResetColor();
 			}
 		}
 	}
+}
 }
 							
 				

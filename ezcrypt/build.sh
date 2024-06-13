@@ -11,3 +11,4 @@ md5sum release/v3.2/MacOS/amd64/ezcrypt > release/v3.2/MacOS/amd64/ezcrypt.md5.t
 md5sum release/v3.2/Windows/amd64/ezcrypt.exe > release/v3.2/Windows/amd64/ezcrypt.md5.txt
 md5sum release/v3.2/Windows/i386/ezcrypt.exe > release/v3.2/Windows/i386/ezcrypt.md5.txt
 ./clean.sh
+./test.sh

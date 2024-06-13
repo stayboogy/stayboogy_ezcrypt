@@ -21,6 +21,12 @@
 
 - Very Secure Method if I do say so myself.
 
+- Files Encrypted with EZcrypt will have ".eze" extension added to supplied output file name
+
+- Files Decrypted with EZcrypt will have ".ezd" extension added to supplied output file name
+
+  
+
 ### Usage:
 
 - MacOS / Linux - make executable first
@@ -31,6 +37,8 @@ chmod +x ./ezcrypt
 
 - Running without arguments - ./ezcrypt [MacOS / Linux] | ezcrypt [Windows] - gives the following usage help
 ```sh
+EZcrypt by stayboogy@github.com.
+
 Encrypt or Decrypt a file.
 
 
@@ -49,7 +57,12 @@ Examples:
 Password & Salt:  Use Numbers and Letters ONLY for Platform Cross Compatibility
 
 encrypt:       ezcrypt -e inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38Y6uwq90bn
+
 decrypt:       ezcrypt -d inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38Y6uwq90bn
+
+.eze:          encryped files will have '.eze' extension added to them
+
+.ezd:          decrypted files will have '.ezd' extension added to them
 ```
 
 
@@ -84,6 +97,8 @@ Linux:
 
 Windows:
 ezcrypt -e Path:\To\Input\File Path:\To\Output\File password salt
+
+encrypted file will have ".eze" extension
 ```
 
 #### Decrypt file:
@@ -97,6 +112,8 @@ Linux:
 
 Windows:
 ezcrypt -d Path:\To\Input\File Path:\To\Output\File password salt
+
+decrypted file will have ".ezd" extension
 ```
 
 
