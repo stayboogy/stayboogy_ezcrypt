@@ -7,11 +7,11 @@
 
 - Supports Windows [x86, amd64], Linux [amd64, arm64], MacOS [amd64, arm64]
 
-![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/db4b8a16629802a1a8112e0dcd640352794e50fa/ezcrypt/media/ezcrypt-usage-new.gif)
+![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/b3f04ea523573140b7e340bfc4d3e9a4548ad02f/ezcrypt/media/one.gif)
 
-![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/db4b8a16629802a1a8112e0dcd640352794e50fa/ezcrypt/media/ezcrypt-encrypt-new.gif)
+![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/b3f04ea523573140b7e340bfc4d3e9a4548ad02f/ezcrypt/media/two.gif)
 
-![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/db4b8a16629802a1a8112e0dcd640352794e50fa/ezcrypt/media/ezcrypt-decrypt-new.gif)
+![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/b3f04ea523573140b7e340bfc4d3e9a4548ad02f/ezcrypt/media/three.gif)
 
 
 ## Video Demonstration:  https://rumble.com/v51asel-ezcrypt-v3.2-easily-encrypt-decrypt-any-size-any-type-of-file-windows-linux.html
