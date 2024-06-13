@@ -1,11 +1,11 @@
 # EZCRYPT
 
 
-## C# Cross Platform Console Application 
+- C# Cross Platform Console Application 
 
 
 
-## Supports Windows [x86, amd64], Linux [amd64, arm64], MacOS [amd64, arm64]
+- Supports Windows [x86, amd64], Linux [amd64, arm64], MacOS [amd64, arm64]
 
 
 ![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/189baaa60a4078a0ac02e257b6ec75e40dbe83e3/ezcrypt/media/preview.png)
@@ -14,7 +14,7 @@
 ## Video Demonstration:  https://rumble.com/v51asel-ezcrypt-v3.2-easily-encrypt-decrypt-any-size-any-type-of-file-windows-linux.html
 
 
-## Easily Encrypt / Decrypt Files in Windows / Linux / MacOS Terminal
+# Easily Encrypt / Decrypt Files in Windows / Linux / MacOS Terminal
 
 - The way the program works is it takes a mode argument, a source file and a destination file, and then a user supplied Password and Salt to derive a key, and encrypt said source file to the destination file.
 
@@ -32,7 +32,7 @@
 
   
 
-### Usage:
+## Usage:
 
 - MacOS / Linux - make executable first
 ```sh
@@ -71,7 +71,7 @@ decrypt:       ezcrypt -d inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38
 ```
 
 
-### Special Note:
+## Special Note:
 
 ```sh
 Because of the way Terminal works in Linux/MacOS,
@@ -89,9 +89,9 @@ use special characters within Password & Salt
 ```
 
 
-### Usage Examples:
+## Usage Examples:
 
-#### Encrypt File:
+### Encrypt File:
 
 ```sh
 MacOS:
@@ -106,7 +106,7 @@ ezcrypt -e Path:\To\Input\File Path:\To\Output\File password salt
 encrypted file will have ".eze" extension
 ```
 
-#### Decrypt file:
+### Decrypt file:
 
 ```sh
 MacOS:
@@ -122,7 +122,7 @@ decrypted file will have ".ezd" extension
 ```
 
 
-## Build it Yourself on All Platforms:
+# Build it Yourself on All Platforms:
 
 MacOS:
 
