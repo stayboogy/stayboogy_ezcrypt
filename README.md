@@ -8,6 +8,8 @@
 ## Supports Windows [x86, amd64], Linux [amd64, arm64], MacOS [amd64, arm64]
 
 
+![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/189baaa60a4078a0ac02e257b6ec75e40dbe83e3/ezcrypt/media/preview.png)
+
 
 ## Easily Encrypt / Decrypt Files in Windows / Linux / MacOS Terminal
 
