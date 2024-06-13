@@ -13,11 +13,11 @@
 
 
 ## Encryption Demo:
-![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/b3f04ea523573140b7e340bfc4d3e9a4548ad02f/ezcrypt/media/two.gif)
+![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/403ad37957dba3728aac3177a5eac1e91d53fb7d/ezcrypt/media/two-fast.gif)
 
 
 ## Decryption Demo:
-![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/b3f04ea523573140b7e340bfc4d3e9a4548ad02f/ezcrypt/media/three.gif)
+![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/403ad37957dba3728aac3177a5eac1e91d53fb7d/ezcrypt/media/three-fast.gif)
 
 
 ## Video Demonstration:  https://rumble.com/v51asel-ezcrypt-v3.2-easily-encrypt-decrypt-any-size-any-type-of-file-windows-linux.html
