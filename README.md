@@ -5,7 +5,11 @@
 
 
 
-- Supports Windows [x86, amd64], Linux [amd64, arm64], MacOS [amd64, arm64]
+- Supports:
+  
+  Windows [x86, amd64]
+  Linux [amd64, arm64]
+  MacOS [amd64, arm64]
 
   
 ## Usage Demo:
