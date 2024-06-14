@@ -33,16 +33,16 @@
 
 - The program makes an SHA512 hash of the user supplied Password and Salt values >> then converts the password hash bytes to a hex string but leaves the salt in a byte array format >> then using the converted password hex string coupled with the salt hash byte array uses the Rfc2898DeriveBytes.Pbkdf2 method to create an Encryption Key in a byte array of 32 bytes
 
-- Due to Special Functions active in Linux / MacOS Terminals, Special Key Characters should not be used in Password or Salt. Special Key Characters work fine in Windows for encryption and decryption, but if used in Windows you will not be able to decrypt the file in Linux / MacOS.
-
-- DeCryption happens in reverse using a correct Password and Salt.
-
-- Very Secure Method if I do say so myself.
+- Use only Letters and Numbers for Password and Salt.  Only Letters and Numbers are allowed for Password and Salt.  Should you use symbols or special characters in Password or Salt, unless in very rare circumstances in Linux and MacOS, you will get a warning to only use Letters and Numbers.
 
 - Files Encrypted with EZcrypt will have ".eze" extension added to supplied output file name
 
+- DeCryption happens in reverse using a correct Password and Salt.
+
 - Files Decrypted with EZcrypt will have ".ezd" extension added to supplied output file name
 
+
+- Very Secure Method if I do say so myself.
   
 
 ## Usage:
@@ -55,9 +55,9 @@ chmod +x ./ezcrypt
 
 - Running without arguments - ./ezcrypt [MacOS / Linux] | ezcrypt [Windows] - gives the following usage help
 ```sh
-EZcrypt by stayboogy@github.com.
+EZcrypt by stayboogy@github.com
 
-Encrypt or Decrypt a file.
+Encrypt or Decrypt a file in Windows/Linux/MacOS Terminals
 
 
 ezcrypt [-e] [-d] source destination [password] [salt]
@@ -72,7 +72,7 @@ salt           Specifies the Encryption Salt.
 
 Examples:
 
-Password & Salt:  Use Numbers and Letters ONLY for Platform Cross Compatibility
+Password & Salt:  Numbers and Letters Only Allowed
 
 encrypt:       ezcrypt -e inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38Y6uwq90bn
 
@@ -87,18 +87,7 @@ decrypt:       ezcrypt -d inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38
 ## Special Note:
 
 ```sh
-Because of the way Terminal works in Linux/MacOS,
-certain special characters cause issues in Password & Salt.
-
-In Windows, you can use special characters
-in any location in Password & Salt with No Issues.
-
-For True Cross Platform Compatibility,
-Do Not Use Special Characters in Password & Salt.
-
-If only using EZCrypt in Windows,
-with no plan of decrypting the file in Linux / MacOS,
-use special characters within Password & Salt
+Letters and Numbers ONLY Allowed for Password and Salt
 ```
 
 
@@ -116,6 +105,8 @@ Linux:
 Windows:
 ezcrypt -e Path:\To\Input\File Path:\To\Output\File password salt
 
+
+
 encrypted file will have ".eze" extension
 ```
 
@@ -130,6 +121,8 @@ Linux:
 
 Windows:
 ezcrypt -d Path:\To\Input\File Path:\To\Output\File password salt
+
+
 
 decrypted file will have ".ezd" extension
 ```

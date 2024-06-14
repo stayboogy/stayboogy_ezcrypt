@@ -117,17 +117,7 @@ namespace EZCrypt
 			// args 3 output file decrypted files extension
 			var ddFilename = destinationFilename + ".ezd";
 			
-			//
-			//
-			// args 3 encrypted file output file path + .ez-e extension
-			//var deFilename = Path.ChangeExtension(args[2], Path.GetExtension(args[2]) + ".ez-e");
-			// args 3 decrypted file output file path + .ez-d extension
-			//var ddFilename = Path.ChangeExtension(args[2], Path.GetExtension(args[2]) + ".ez-d");
-			//
-			//
-			
-			
-			//var cvalid = @"^[a-zA-Z0-9\_]+$";
+			// this constructs a way of verifying Password and Salt don't use symbols or special characters
 			bool pvalid;
 			bool svalid;
 			if (Regex.IsMatch(args[3], @"^[\p{L}\p{N}]+$"))
@@ -289,5 +279,11 @@ namespace EZCrypt
 	}
 }
 }
-							
-				
+
+//
+//		
+// unused code
+// snippets kept for possible further use
+// I like to remember useful methods
+//					
+//				
