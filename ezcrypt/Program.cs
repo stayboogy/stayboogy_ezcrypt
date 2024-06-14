@@ -15,6 +15,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace EZCrypt
 {
@@ -48,11 +49,11 @@ namespace EZCrypt
 				// we console print the usage help
 				Console.WriteLine("");
 				Console.ForegroundColor = ConsoleColor.Blue;
-				Console.WriteLine("EZcrypt by stayboogy@github.com.");
+				Console.WriteLine("EZcrypt by stayboogy@github.com");
 				Console.WriteLine("");
 				Console.ForegroundColor = ConsoleColor.Green;
 				
-				Console.WriteLine("Encrypt or Decrypt a file.");
+				Console.WriteLine("Encrypt or Decrypt a file in Windows/Linux/MacOS Terminals");
 				Console.WriteLine("");
 				Console.WriteLine("\nezcrypt [-e] [-d] source destination [password] [salt]\n");
 				Console.WriteLine("");
@@ -70,7 +71,7 @@ namespace EZCrypt
 				Console.WriteLine("Examples:");
 				Console.WriteLine("");
 				Console.ForegroundColor = ConsoleColor.Blue;
-				Console.WriteLine("Password & Salt:  Use Numbers and Letters ONLY for Platform Cross Compatibility");
+				Console.WriteLine("Password & Salt:  Numbers and Letters Only Allowed");
 				Console.WriteLine("");
 				Console.ForegroundColor = ConsoleColor.Green;
 				// encrypt example
@@ -101,9 +102,9 @@ namespace EZCrypt
 			 {	
 			 	// let the user know something is wrong with their input file path
 				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine("\n-- source file does not exist --");
-				Console.WriteLine("\n-- confirm your entry --");
-				Console.WriteLine("\n-- use quotations for paths with spaces --");
+				Console.WriteLine("\n! source file does not exist !");
+				Console.WriteLine("\n! confirm your entry !");
+				Console.WriteLine("\n! use quotations for paths with spaces !");
 				Console.WriteLine("\n");
 				Console.ResetColor();
 				return;
@@ -124,6 +125,35 @@ namespace EZCrypt
 			//var ddFilename = Path.ChangeExtension(args[2], Path.GetExtension(args[2]) + ".ez-d");
 			//
 			//
+			
+			
+			//var cvalid = @"^[a-zA-Z0-9\_]+$";
+			bool pvalid;
+			bool svalid;
+			if (Regex.IsMatch(args[3], @"^[\p{L}\p{N}]+$"))
+			{
+				pvalid = true;
+			}
+			else
+			{
+				pvalid = false;
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("\n! use only Letters and Numbers for Password !");
+				Console.WriteLine("");
+				Console.ResetColor();
+			}
+			if (Regex.IsMatch(args[4], @"^[\p{L}\p{N}]+$"))
+			{
+				svalid = true;
+			}
+			else
+			{
+				svalid = false;
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("\n! use only Letters and Numbers for Salt !");
+				Console.WriteLine("");
+				Console.ResetColor();
+			}
 			
 			// have to create sha512 instance to be able to use HashAlgorithm method
 			HashAlgorithm sha = SHA512.Create();
@@ -154,14 +184,14 @@ namespace EZCrypt
 			
 			// if we are encrypting a file
 			// args 1
-			if (mode == "-e")
+			if ((mode == "-e" && pvalid == true && svalid == true))
 			{
 				// if encrypted output file already exists
 				// return
 				if (File.Exists(deFilename))
 				{
 					Console.ForegroundColor = ConsoleColor.Red;
-					Console.WriteLine("\n-- output file already exists --");
+					Console.WriteLine("\n! output file already exists !");
 					Console.WriteLine("");
 					Console.ResetColor();
 					return;
@@ -187,14 +217,14 @@ namespace EZCrypt
 			
 			// if we are decrypting a file
 			// args 1
-			else if (mode == "-d")
+			else if ((mode == "-d" && pvalid == true && svalid == true))
 			{
 				// if decrypted output file already exists
 				// return
 				if (File.Exists(ddFilename))
 				{
 					Console.ForegroundColor = ConsoleColor.Red;
-					Console.WriteLine("\n-- output file already exists --");
+					Console.WriteLine("\n! output file already exists !");
 					Console.WriteLine("");
 					Console.ResetColor();
 					return;
@@ -228,10 +258,7 @@ namespace EZCrypt
 							destinationStream.Close();
 							Console.ForegroundColor = ConsoleColor.Red;
 							// let the user know their Password and/or Salt is incorrect
-							Console.WriteLine("\n-- Password + Salt combination incorrect --");
-							Console.WriteLine("");
-							Console.WriteLine("\n-- confirm your Password --");
-							Console.WriteLine("\n-- confirm your Salt --");
+							Console.WriteLine("\n! Password + Salt combination Incorrect !");
 							Console.WriteLine("");
 							Console.ResetColor();
 							// delete the (possibly) created file that is not decrypted due to incorrect password and/or salt
@@ -245,7 +272,7 @@ namespace EZCrypt
 				{
 					Console.ForegroundColor = ConsoleColor.Red;
 					// notify user inputfile needs to be an ".eze" encrypted file
-					Console.WriteLine("\n-- input file not '.eze' encrypted file --");
+					Console.WriteLine("\n! input file not '.eze' encrypted file !");
 					Console.WriteLine("");
 					Console.ResetColor();
 					return;
@@ -255,7 +282,7 @@ namespace EZCrypt
 			{
 				// let the user know to user either -e and/or -d only
 				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine("select the ecryption/decryption mode using -e or -d.");
+				Console.WriteLine("! select the ecryption/decryption mode using -e or -d !");
 				Console.ResetColor();
 			}
 		}
