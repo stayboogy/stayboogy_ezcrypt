@@ -27,7 +27,9 @@
 ## Video Demonstration:  https://rumble.com/v51asel-ezcrypt-v3.2-easily-encrypt-decrypt-any-size-any-type-of-file-windows-linux.html
 
 
-# Easily Encrypt / Decrypt Files in Windows / Linux / MacOS Terminal
+# Easily Encrypt / Decrypt Files in Terminal
+ 
+- Windows / Linux / MacOS - Cross Platform Operations - OS Cross Compatible Encryption & Decryption
 
 - The way the program works is it takes a mode argument, a source file and a destination file, and then a user supplied Password and Salt to derive a key, and encrypt said source file to the destination file.
 
