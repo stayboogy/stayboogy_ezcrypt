@@ -49,10 +49,9 @@ namespace EZCrypt
 				// we console print the usage help
 				Console.WriteLine("");
 				Console.ForegroundColor = ConsoleColor.Blue;
-				Console.WriteLine("EZcrypt by stayboogy@github.com");
+				Console.WriteLine("EZcrypt by stayboogy@github.com v4.0");
 				Console.WriteLine("");
 				Console.ForegroundColor = ConsoleColor.Green;
-				
 				Console.WriteLine("Encrypt or Decrypt a file in Windows/Linux/MacOS Terminals");
 				Console.WriteLine("");
 				Console.WriteLine("\nezcrypt [-e] [-d] source destination [password] [salt]\n");
@@ -61,10 +60,8 @@ namespace EZCrypt
 				Console.WriteLine("{0,-15}Sets the mode to DECRYPT.", "-d");
 				Console.WriteLine("{0,-15}Specifies the input file path.", "source");
 				Console.WriteLine("{0,-15}Specifies the destination file path.", "destination");
-				
 				// original source had password optional - this is not advised for any encryption
 				Console.WriteLine("{0,-15}Specifies the Encryption Password.", "password");
-				
 				// original source had a static defined salt - this is not advised for any encryption
 				Console.WriteLine("{0,-15}Specifies the Encryption Salt.", "salt");
 				Console.WriteLine("");
@@ -77,11 +74,9 @@ namespace EZCrypt
 				// encrypt example
 				Console.WriteLine("{0,-15}ezcrypt -e inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38Y6uwq90bn", "encrypt:");
 				Console.WriteLine("");
-				
 				// decrypt example
 				Console.WriteLine("{0,-15}ezcrypt -d inputFilePath outputFilePath Trs89Ely3Ui9031 89073ey38Y6uwq90bn", "decrypt:");
 				Console.WriteLine("");
-				
 				Console.ForegroundColor = ConsoleColor.Blue;
 				// alert user of our auto added file extensions
 				Console.WriteLine("{0,-15}encryped files will have '.eze' extension added to them", ".eze:");
@@ -118,26 +113,36 @@ namespace EZCrypt
 			var ddFilename = destinationFilename + ".ezd";
 			
 			// this constructs a way of verifying Password and Salt don't use symbols or special characters
+			// is password vaild?
 			bool pvalid;
+			// is salt valid
 			bool svalid;
+			// if args 4, password, has only letters and numbers
 			if (Regex.IsMatch(args[3], @"^[\p{L}\p{N}]+$"))
 			{
+				// password is valid
 				pvalid = true;
 			}
 			else
 			{
+				// otherwise password is not valid
+				// alert the user Password can contain only Letters and Numbers
 				pvalid = false;
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("\n! use only Letters and Numbers for Password !");
 				Console.WriteLine("");
 				Console.ResetColor();
 			}
+			// args 5, salt, has only letters and numbers
 			if (Regex.IsMatch(args[4], @"^[\p{L}\p{N}]+$"))
 			{
+				// salt is valid
 				svalid = true;
 			}
 			else
 			{
+				// otherwise salt is not valid
+				// alert the user Salt can contain only Letters and Numbers
 				svalid = false;
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("\n! use only Letters and Numbers for Salt !");
@@ -166,6 +171,7 @@ namespace EZCrypt
 			// if arguments equal 5
 			if (args.Length == 5)
 			{
+				// create our encryption key
 				using (var converter = new Rfc2898DeriveBytes(sauce, salt))
 				{
 					key = converter.GetBytes(32);
@@ -177,7 +183,7 @@ namespace EZCrypt
 			if ((mode == "-e" && pvalid == true && svalid == true))
 			{
 				// if encrypted output file already exists
-				// return
+				// alert the user and return
 				if (File.Exists(deFilename))
 				{
 					Console.ForegroundColor = ConsoleColor.Red;
@@ -197,6 +203,7 @@ namespace EZCrypt
 					{
 						destinationStream.Write(provider.IV, 0, provider.IV.Length);
 						sourceStream.CopyTo(cryptoStream);
+						// alert the user encryption is finished
 						Console.ForegroundColor = ConsoleColor.Green;
 						Console.WriteLine("\nFile EnCryption Complete! \n");
 						Console.WriteLine("");
@@ -210,7 +217,7 @@ namespace EZCrypt
 			else if ((mode == "-d" && pvalid == true && svalid == true))
 			{
 				// if decrypted output file already exists
-				// return
+				// alert the user and return
 				if (File.Exists(ddFilename))
 				{
 					Console.ForegroundColor = ConsoleColor.Red;
@@ -219,7 +226,7 @@ namespace EZCrypt
 					Console.ResetColor();
 					return;
 				}
-				
+				// if the input file contains the ".eze" ezcrypt extension
 				if (Path.GetExtension(sourceFilename) == (".eze"))
 				{
 				// decrypt the source file and write it to the destination file.
@@ -235,6 +242,7 @@ namespace EZCrypt
 						try
 						{
 							cryptoStream.CopyTo(destinationStream);
+							// alert the user the decryption is finished
 							Console.ForegroundColor = ConsoleColor.Green;
 							Console.WriteLine("\nFile DeCryption Complete! \n");
 							Console.WriteLine("");
@@ -258,10 +266,11 @@ namespace EZCrypt
 					 }
 				  }
 				}
+				// else if not an ".eze" ezcrypt encrypted file, return
 				else if (Path.GetExtension(sourceFilename) != (".eze"))
 				{
-					Console.ForegroundColor = ConsoleColor.Red;
 					// notify user inputfile needs to be an ".eze" encrypted file
+					Console.ForegroundColor = ConsoleColor.Red;
 					Console.WriteLine("\n! input file not '.eze' encrypted file !");
 					Console.WriteLine("");
 					Console.ResetColor();
@@ -279,11 +288,4 @@ namespace EZCrypt
 	}
 }
 }
-
-//
-//		
-// unused code
-// snippets kept for possible further use
-// I like to remember useful methods
-//					
-//				
+			
