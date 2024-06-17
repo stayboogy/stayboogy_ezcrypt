@@ -134,7 +134,7 @@ namespace EZCrypt
 				Console.WriteLine("");
 				Console.ResetColor();
 			}
-			// args 5, salt, has only letters and numbers
+			// if args 5, salt, has only letters and numbers
 			if (Regex.IsMatch(args[4], @"^[\p{L}\p{N}]+$"))
 			{
 				// salt is valid
@@ -238,42 +238,42 @@ namespace EZCrypt
 				// if the input file contains the ".eze" ezcrypt extension
 				if (Path.GetExtension(sourceFilename) == (".eze"))
 				{
-				// decrypt the source file and write it to the destination file.
-				using (var sourceStream = File.OpenRead(sourceFilename))
-				using (var destinationStream = File.Create(ddFilename))
-				using (var provider = new AesCryptoServiceProvider())
-				{
-					var IV = new byte[provider.IV.Length];
-					sourceStream.Read(IV, 0, IV.Length);
-					using (var cryptoTransform = provider.CreateDecryptor(key, IV))
-					using (var cryptoStream = new CryptoStream(sourceStream, cryptoTransform, CryptoStreamMode.Read))
-					{
-						try
-						{
-							cryptoStream.CopyTo(destinationStream);
-							// alert the user the decryption is finished
-							Console.ForegroundColor = ConsoleColor.Green;
-							Console.WriteLine("\nFile DeCryption Complete! \n");
-							Console.WriteLine("");
-							Console.ResetColor();
-						}
-						// if the Password and/or Salt is incorrect
-						catch
-						{
-							// close the file copy stream so file can be deleted if created
-							// this is mainly for Windows
-							destinationStream.Close();
-							// let the user know their Password and/or Salt is incorrect
-							Console.ForegroundColor = ConsoleColor.Red;
-							Console.WriteLine("\n! Password + Salt combination Incorrect !");
-							Console.WriteLine("");
-							Console.ResetColor();
-							// delete the (possibly) created file that is not decrypted due to incorrect password and/or salt
-							File.Delete(ddFilename);
-							return;
-						}
-					 }
-				  }
+			                // decrypt the source file and write it to the destination file.
+				        using (var sourceStream = File.OpenRead(sourceFilename))
+				        using (var destinationStream = File.Create(ddFilename))
+				        using (var provider = new AesCryptoServiceProvider())
+				        {
+					        var IV = new byte[provider.IV.Length];
+					        sourceStream.Read(IV, 0, IV.Length);
+					        using (var cryptoTransform = provider.CreateDecryptor(key, IV))
+					        using (var cryptoStream = new CryptoStream(sourceStream, cryptoTransform, CryptoStreamMode.Read))
+					        {     
+						        try
+						        {
+							        cryptoStream.CopyTo(destinationStream);
+							        // alert the user the decryption is finished
+							        Console.ForegroundColor = ConsoleColor.Green;
+							        Console.WriteLine("\nFile DeCryption Complete! \n");
+							        Console.WriteLine("");
+							        Console.ResetColor();
+						        }
+					                // if the Password and/or Salt is incorrect
+						        catch
+						        {
+							        // close the file copy stream so file can be deleted if created
+							        // this is mainly for Windows
+							        destinationStream.Close();
+							        // let the user know their Password and/or Salt is incorrect
+							        Console.ForegroundColor = ConsoleColor.Red; 
+							        Console.WriteLine("\n! Password + Salt combination Incorrect !");
+							        Console.WriteLine("");
+							        Console.ResetColor();
+							        // delete the (possibly) created file that is not decrypted due to incorrect password and/or salt
+							        File.Delete(ddFilename);
+							        return;
+						        }
+					       }
+				        }
 				}
 				// else if not an ".eze" ezcrypt encrypted file, return
 				else if (Path.GetExtension(sourceFilename) != (".eze"))
