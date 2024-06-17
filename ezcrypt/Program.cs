@@ -112,10 +112,11 @@ namespace EZCrypt
 			// args 3 output file decrypted files extension
 			var ddFilename = destinationFilename + ".ezd";
 			
-			// this constructs a way of verifying Password and Salt don't use symbols or special characters
+			// this constructs a way of verifying Password and Salt 
+			// Password and Salt can only contain Letters and Numbers
 			// is password vaild?
 			bool pvalid;
-			// is salt valid
+			// is salt valid?
 			bool svalid;
 			// if args 4, password, has only letters and numbers
 			if (Regex.IsMatch(args[3], @"^[\p{L}\p{N}]+$"))
@@ -158,6 +159,7 @@ namespace EZCrypt
 			var password = sha.ComputeHash(Encoding.UTF8.GetBytes(args[3]));
 			// sha512 hash is then conveted to hex string
 			// Rfc2898DeriveBytes method below requires string for first argument
+			// password > sauce
 			var sauce = Convert.ToHexString(password);
 			
 			// args 5 user set salt
@@ -166,6 +168,7 @@ namespace EZCrypt
 			// salt must be byte array for Rfc2898DeriveBytes method below second argument
 			var salt = sha.ComputeHash(Encoding.UTF8.GetBytes(args[4]));
 			
+			//define a key
 			byte[] key = null;
 			
 			// if arguments equal 5
@@ -180,6 +183,8 @@ namespace EZCrypt
 			
 			// if we are encrypting a file
 			// args 1
+			// and Password is valid
+			// and Salt is vaild
 			if ((mode == "-e" && pvalid == true && svalid == true))
 			{
 				// if encrypted output file already exists
@@ -214,12 +219,16 @@ namespace EZCrypt
 			
 			// if we are decrypting a file
 			// args 1
+			// and Password is valid
+			// and Salt is vaild
 			else if ((mode == "-d" && pvalid == true && svalid == true))
 			{
 				// if decrypted output file already exists
 				// alert the user and return
 				if (File.Exists(ddFilename))
 				{
+					// notify the user decrypted output file exists
+					// return
 					Console.ForegroundColor = ConsoleColor.Red;
 					Console.WriteLine("\n! output file already exists !");
 					Console.WriteLine("");
@@ -254,8 +263,8 @@ namespace EZCrypt
 							// close the file copy stream so file can be deleted if created
 							// this is mainly for Windows
 							destinationStream.Close();
-							Console.ForegroundColor = ConsoleColor.Red;
 							// let the user know their Password and/or Salt is incorrect
+							Console.ForegroundColor = ConsoleColor.Red;
 							Console.WriteLine("\n! Password + Salt combination Incorrect !");
 							Console.WriteLine("");
 							Console.ResetColor();
@@ -283,6 +292,7 @@ namespace EZCrypt
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("! select the ecryption/decryption mode using -e or -d !");
 				Console.ResetColor();
+				return;
 			}
 		}
 	}
