@@ -288,7 +288,7 @@ namespace EZCrypt
 			// if something other than -e and/or -d is used for args 1
 			else
 			{
-				// let the user know to user either -e and/or -d only
+				// let the user know to use either -e and/or -d only
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("! select the ecryption/decryption mode using -e or -d !");
 				Console.ResetColor();
