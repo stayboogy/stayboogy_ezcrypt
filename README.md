@@ -11,6 +11,8 @@
   - MacOS [amd64, arm64]
 
   - SEE HERE FOR LATEST BINARIES FOR YOUR PLATFORM:  https://github.com/stayboogy/stayboogy_ezcrypt/releases/tag/v4.0
+
+- Base Code Comes From Here: https://github.com/JohnRush/File-Encryption-Tutorial/tree/master/source/Tutorial03
   
 ## Usage Demo:
 ![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/b3f04ea523573140b7e340bfc4d3e9a4548ad02f/ezcrypt/media/one.gif)
