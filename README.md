@@ -1,7 +1,9 @@
 # EZCRYPT
 
 
-- C# Cross Platform Console Application 
+- C# Cross Platform Console Application
+
+  - Single, Self-Contained, executable binary
 
   
   - Windows [x86, amd64]
@@ -9,8 +11,12 @@
   - Linux [amd64, arm64]
   
   - MacOS [amd64, arm64]
+ 
+  
 
-  - SEE HERE FOR LATEST BINARIES FOR YOUR PLATFORM:  https://github.com/stayboogy/stayboogy_ezcrypt/releases/tag/v4.0
+  - SEE HERE FOR LATEST BINARY FOR YOUR PLATFORM:  https://github.com/stayboogy/stayboogy_ezcrypt/releases/tag/v4.0
+ 
+    
 
 - Base Code Comes From Here: https://github.com/JohnRush/File-Encryption-Tutorial/tree/master/source/Tutorial03
   
