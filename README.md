@@ -20,30 +20,6 @@
 
 - Base Code Comes From Here: https://github.com/JohnRush/File-Encryption-Tutorial/tree/master/source/Tutorial03
 
-## About Version Releases:
-
-```sh
-
-- this work evolved very fast publicly as it improved
-
-- if you encrypted files with v2.1, decrypt with v2.1
-
-- if you encrypted files with v2.2, decrypt with v2.2
-
-- if you encrypted files with v2.3 or higher, if your encrypted file does not have ".eze" added to it, manually add it and use v3.3 for decryption
-
-
-- all files created with v2.3 are compatible with v2.3-v3.3; v3.3 requires your encrypted input file to have the ".eze" extension to decrypt as mentioned above
-
-
-- going forward, use v4.0 or higher for everything
-
-
-- I would decrypt everything if possible, and re-encrypt with v4.0 or higher
-
-- no security risks for not doing so, just you will not have the latest compatible version
-```
-
 
 ## Usage Demo:
 ![App Screenshot](https://github.com/stayboogy/stayboogy_ezcrypt/blob/b3f04ea523573140b7e340bfc4d3e9a4548ad02f/ezcrypt/media/one.gif)
@@ -165,6 +141,30 @@ ezcrypt -d Path:\To\Input\File Path:\To\Output\File password salt
 
 
 decrypted file will have ".ezd" extension
+```
+
+# About Version Releases:
+
+```sh
+
+- this work evolved very fast publicly as it improved
+
+- if you encrypted files with v2.1, decrypt with v2.1
+
+- if you encrypted files with v2.2, decrypt with v2.2
+
+- if you encrypted files with v2.3 or higher, if your encrypted file does not have ".eze" added to it, manually add it and use v3.3 for decryption
+
+
+- all files created with v2.3 are compatible with v2.3-v3.3; v3.3 requires your encrypted input file to have the ".eze" extension to decrypt as mentioned above
+
+
+- going forward, use v4.0 or higher for everything
+
+
+- I would decrypt everything if possible, and re-encrypt with v4.0 or higher
+
+- no security risks for not doing so, just you will not have the latest compatible version
 ```
 
 
