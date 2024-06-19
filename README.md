@@ -30,7 +30,7 @@
 
 - if you encrypted files with v2.2, decrypt with v2.2
 
-- if you encrypted files with v2.3 or higher, if your encrypted file does not have ".eze" added to it, manually add it and use v3.3 for decryption; 
+- if you encrypted files with v2.3 or higher, if your encrypted file does not have ".eze" added to it, manually add it and use v3.3 for decryption
 
 
 - all files created with v2.3 are compatible with v2.3-v3.3; v3.3 requires your encrypted input file to have the ".eze" extension to decrypt as mentioned above
