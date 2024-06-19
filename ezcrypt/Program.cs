@@ -23,6 +23,28 @@ namespace EZCrypt
 	{
 		static void Main(string[] args)
 		{
+			// Random Password and Salt Generator
+			if (args.Length == 1 && args[0] == "-r")
+			{				
+				string rp = Path.GetRandomFileName().Replace(".","");
+				string rs = Path.GetRandomFileName().Replace(".","");
+				Console.ForegroundColor = ConsoleColor.Blue;
+				Console.WriteLine("Random Password:");
+				Console.ForegroundColor = ConsoleColor.Green;
+				Console.WriteLine(rp);
+				Console.WriteLine("");
+				Console.ForegroundColor = ConsoleColor.Blue;
+				Console.WriteLine("Random Salt:");
+				Console.ForegroundColor = ConsoleColor.Green;
+				Console.WriteLine(rs);
+				Console.WriteLine("");
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("use these values for Password and Salt");
+				Console.WriteLine("");
+				Console.WriteLine("! it is your responsibility to remember these should you use them !");
+				Console.ResetColor();
+				return;
+			}
 			// determine OS Platform
 			OperatingSystem os = Environment.OSVersion;
 			
@@ -43,7 +65,7 @@ namespace EZCrypt
 			// 5 arg for encryption salt
 			
 			// if arguments don't equal 5
-			if (args.Length != 5)
+			if ((args.Length != 1 && args.Length != 5))
 			{
 				// we console print the usage help
 				Console.WriteLine("");
@@ -83,17 +105,25 @@ namespace EZCrypt
 				Console.WriteLine("{0,-15}decrypted files will have '.ezd' extension added to them", ".ezd:");
 				Console.WriteLine("");
 				Console.ResetColor();
+				Console.WriteLine("");
+				Console.ForegroundColor = ConsoleColor.Blue;
+				Console.WriteLine("Secret:");
+				Console.WriteLine("");
+				Console.ForegroundColor = ConsoleColor.Green;
+				Console.WriteLine("{0,-15}provides a random Password and Salt", "ezcrypt -r");
+				Console.WriteLine("");
+				Console.ResetColor();
 				return;
 			}
+
+			// args 1 mode
+			var mode = args[0];
 			
-			 // args 1 mode
-			 var mode = args[0];
-			 
-			 // args 2 input file path
-			 var sourceFilename = args[1];
-			 // if the input file doesn't exist (regardless of encryption or decryption)
-			 if (!File.Exists(sourceFilename))
-			 {	
+			// args 2 input file path
+			var sourceFilename = args[1];
+			// if the input file doesn't exist (regardless of encryption or decryption)
+			if (!File.Exists(sourceFilename))
+			{	
 			 	// let the user know something is wrong with their input file path
 				// return
 				Console.ForegroundColor = ConsoleColor.Red;
@@ -103,7 +133,7 @@ namespace EZCrypt
 				Console.WriteLine("\n");
 				Console.ResetColor();
 				return;
-			 }
+			}
 			
 			// args 3 output file path
 			var destinationFilename = args[2];
@@ -179,7 +209,6 @@ namespace EZCrypt
 				{
 					key = converter.GetBytes(32);
 				}
-			}
 			
 			// if we are encrypting a file
 			// args 1
@@ -296,6 +325,7 @@ namespace EZCrypt
 				Console.ResetColor();
 				return;
 			}
+		}
 		}
 	}
 }
